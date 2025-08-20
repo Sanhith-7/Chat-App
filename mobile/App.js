@@ -13,7 +13,7 @@ function RootNavigator() {
   const { authStateLoaded, user } = useAuth();
   if (!authStateLoaded) return null;
   return (
-    <Stack.Navigator>
+    <Stack.Navigator key={user ? 'app' : 'auth'}>
       {user ? (
         <>
           <Stack.Screen name="Home" component={HomeScreen} />

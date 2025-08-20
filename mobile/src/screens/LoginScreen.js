@@ -55,6 +55,8 @@ export default function LoginScreen({ navigation }) {
     try {
       setLoading(true);
       await login(email.trim(), password);
+      // Ensure we land on Home without needing a manual refresh
+      navigation.reset({ index: 0, routes: [{ name: 'Home' }] });
     } catch (error) {
       const message = error?.response?.data?.error || error?.message || 'Login failed';
       Alert.alert('Login Error', message);
